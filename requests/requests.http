@@ -1,0 +1,24 @@
+@api_url = http://localhost
+@port = 3000
+@host = {{api_url}}:{{port}}
+
+### health api
+GET {{host}}/api
+
+### login token
+POST {{host}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "hello@mail.com",
+  "password": "asd123"
+}
+
+### register user
+POST {{host}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email": "hello@mail.com",
+  "password": "asd123"
+}
