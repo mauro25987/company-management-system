@@ -1,9 +1,9 @@
-import { createUser, findUserByEmail } from '../repositories/user.repository.ts'
+import { createUser, findUserByEmail, getUserAndPw } from '../repositories/user.repository.ts'
 import { createToken } from '../utils/jwt.ts'
 import { createId, hashPassword, verifyPassword } from '../utils/password.ts'
 
 export async function login(email: string, password: string) {
-  const user = findUserByEmail(email)
+  const user = getUserAndPw(email)
   if (!user) throw new Error('Correo no existe')
 
   const passwordValid = await verifyPassword(password, user.password_hash)
