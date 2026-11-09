@@ -12,7 +12,7 @@ export function getUsers(req: Request, res: Response) {
   }
 }
 
-export function getUser(req: Request, res: Response) {
+export function getUser(req: Request<{ id: string }>, res: Response) {
   try {
     const user = userService.getUserInfo(req.params.id)
     return res.status(200).json({ message: user })

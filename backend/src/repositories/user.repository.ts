@@ -8,9 +8,14 @@ export function createUser(id: string, email: string, password: string) {
   return user.get(id, email, password)
 }
 
-export function findUserByEmail(id: string): UserResult {
+export function findUserById(id: string): UserResult {
   const user = db.prepare('SELECT id, email FROM users WHERE id = ?')
   return user.get(id) as UserResult
+}
+
+export function findUserByEmail(email: string) {
+  const user = db.prepare('SELECT email FROM users WHERE email = ?')
+  return user.get(email)
 }
 
 export function getUserAndPw(email: string): UserResultWithPw {

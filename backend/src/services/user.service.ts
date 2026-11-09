@@ -1,4 +1,4 @@
-import { findUserByEmail, showUsers } from '../repositories/user.repository.ts'
+import { findUserById, showUsers } from '../repositories/user.repository.ts'
 
 export function getUsersInfo() {
   const users = showUsers()
@@ -14,7 +14,7 @@ export function getUsersInfo() {
 }
 
 export function getUserInfo(id: string) {
-  const user = findUserByEmail(id)
+  const user = findUserById(id)
   if (!user) throw new Error('Usuario no existe')
   return user
 }
