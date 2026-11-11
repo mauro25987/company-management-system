@@ -3,8 +3,17 @@ import * as authService from '../services/auth.service.ts'
 
 export async function login(req: Request, res: Response) {
   try {
-    const result = await authService.login(req.body.email, req.body.password)
-    return res.status(200).json({ token: result })
+    const token = await authService.login(req.body.email, req.body.password)
+    return res
+      .cookie('access_token', token, {
+        httpOnly: true,
+        sameSite: 'strict',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 1000 * 60 * 60,
+      })
+      .status(200)
+      .json({ message: 'Login succesull' })
   } catch (error) {
     return res
       .status(401)

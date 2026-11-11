@@ -12,8 +12,7 @@ function LoginPage() {
     const password = String(formData.get('password'))
 
     try {
-      const response = await login(email, password)
-      localStorage.setItem('token', response.token)
+      await login(email, password)
       navigate('/dashboard')
     } catch (error) {
       console.log(error)
@@ -24,10 +23,8 @@ function LoginPage() {
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Ingresar Email</label>
       <input type="email" name="email" id="email" />
-      <label htmlFor="password" id="password">
-        Ingresar Password
-      </label>
-      <input type="password" name="password" />
+      <label htmlFor="password">Ingresar Password</label>
+      <input type="password" name="password" id="password" />
       <button type="submit">Login</button>
     </form>
   )

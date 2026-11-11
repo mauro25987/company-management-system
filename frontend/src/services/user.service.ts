@@ -1,7 +1,10 @@
 export const getUsers = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/users')
+  const response = await fetch('http://localhost:3000/api/v1/users', {
+    method: 'GET',
+    credentials: 'include',
+  })
 
-  if (!response.ok) throw new Error('Error al obtener usuarios')  
+  if (!response.ok) throw new Error('Error al obtener usuarios')
 
   return response.json()
 }
