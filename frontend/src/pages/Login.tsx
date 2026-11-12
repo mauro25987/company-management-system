@@ -1,4 +1,3 @@
-import type React from 'react'
 import { useNavigate } from 'react-router'
 import { login } from '../services/auth.service'
 
@@ -18,7 +17,6 @@ function LoginPage() {
       console.log(error)
     }
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Ingresar Email</label>

@@ -10,3 +10,13 @@ export const login = async (email: string, password: string) => {
 
   return response.json()
 }
+
+export const logout = async () => {
+  const response = await fetch('http://localhost:3000/api/v1/auth/logout', {
+    method: 'POST',
+  })
+
+  if (!response.ok) throw new Error('Error al intentar desloguearse')
+
+  return response.json()
+}

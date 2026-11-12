@@ -10,7 +10,7 @@ export async function login(req: Request, res: Response) {
         sameSite: 'strict',
         path: '/',
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60,
+        maxAge: 1000 * 10,
       })
       .status(200)
       .json({ message: 'Login succesull' })
@@ -19,6 +19,11 @@ export async function login(req: Request, res: Response) {
       .status(401)
       .json({ error: error instanceof Error ? error.message : 'Error desconocido' })
   }
+}
+
+export function logout(req: Request, res: Response) {
+  res.clearCookie('access_token')
+  return res.status(200).json({ message: 'Logout exitoso' })
 }
 
 export async function register(req: Request, res: Response) {
